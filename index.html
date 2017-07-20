@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Prueba-firebase</title>
+</head>
+<body>
+  <h1 id="name"></h1>
+  <h2 id="dni"></h2>
+
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA9rz1Igcs9PQ5bbEBG2CUwT2X1L0QPdfU",
+    authDomain: "holas-32499.firebaseapp.com",
+    databaseURL: "https://holas-32499.firebaseio.com",
+    projectId: "holas-32499",
+    storageBucket: "",
+    messagingSenderId: "397510598330"
+  };
+  firebase.initializeApp(config);
+
+  var nombre=document.getElementById('name');
+  var db = firebase.database().ref().child('fullname');
+  db.on('value',snap => nombre.innerText = snap.val());
+  var dni=document.getElementById('dni');
+  var dbD= firebase.database().ref().child('dni');
+  dbD.on('value', snap => dni.innerText = snap.val());
+</script>
+</body>
+</html>
